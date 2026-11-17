@@ -1,0 +1,315 @@
+#!/bin/bash
+#
+#######################
+#    ^...^  `^...^´   #
+#   / o,o \ / O,O \   #
+#   |):::(| |):::(|   #
+# ====" "=====" "==== #
+#         TdC         #
+#      1998-2026      #
+#######################
+#
+# Toca das Corujas
+# Códigos Binários,
+# Funções de Onda e
+# Teoria do Orbital Molecular Inc.
+# Unidade Barão Geraldo CX
+#
+# 2026_11_17
+
+
+
+xtdc_carga(){
+    dica="- Carrega as funções XTDC"
+    if [ -f /bin/xtdc ]; then
+    source /bin/xtdc
+    notify-send -t 3000 -i dialog-information "XTDC" "Funções carregadas em: $(date +%H:%M:%S)"
+    fi
+}
+
+xtdc_limpa(){
+     dica="- Limpa o sistema usando o Bleachbit"
+     bleachbit -c --preset
+     sudo bleachbit -c --preset
+     notify-send -t 3000 -i dialog-information "Sistema limpo" "Limpo em: $(date +%H:%M:%S)"
+}
+
+xtdc_som(){
+    dica="- Restaura o som"
+    sudo rmmod -f snd-hda_intel
+    sudo modprobe snd-hda_intel
+}
+
+xtdc_il(){
+    dica="- Instala pkg sem recomendados direto"
+    sudo apt update
+    local pkgil="${1:-}"
+    sudo apt install -y --no-install-recommends "$pkgil"
+    sudo apt clean
+    sudo apt autoclean
+    sudo apt autoremove --purge
+}
+
+xtdc_pkg(){
+    dica="- Lista os pacotes instalados"
+dpkg-query -W -f='${binary:Package}\n'
+}
+
+xtdc_ver(){
+    dica="- Lista os pacotes instalados e versões"
+dpkg-query -W -f='${binary:Package}\t${Version}\n'
+}
+
+xtdc_printa(){
+destino="$HOME/Imagens"
+#mkdir -p "$destino" || exit 1
+arquivo="$destino/print_$(date +%Y_%m_%d_%H_%M_%S).png"
+
+# Selecione a região com o mouse; cancelar encerra o script.
+xfce4-screenshooter --region --save "$arquivo" || exit 1
+
+# Copia o PNG salvo para o clipboard.
+xclip -selection clipboard -t image/png -i "$arquivo"
+
+notify-send -t 3000 -i camera-photo "Captura de Tela" "Salva em:\n${arquivo}"
+}
+    
+xtdc_esconde_link(){
+    dica="- Esconde links simbólicos"
+    find . -type l -exec sh -c '
+for link do
+    dir=$(dirname "$link")
+    nome=$(basename "$link")
+    printf "%s\n" "$nome" >> "$dir/.hidden"
+done
+' sh {} +
+}
+
+xtdc_pid(){
+    dica="- Mostra PID"
+wmctrl -lx
+}
+
+xtdc_terminalnotopo(){
+    dica="- Terminal no topo"
+    xfce4-terminal &
+    for i in $(seq 1 100); do
+        ID=$(wmctrl -lx | awk 'tolower($3) ~ /xfce4-terminal\.xfce4-terminal/ {print $1; exit}')
+        if [ -n "$ID" ]; then
+            wmctrl -i -r "$ID" -b add,above
+            return $?
+        fi
+        sleep 0.1
+    done
+    return 1
+}
+
+xtdc_calculadoranotopo(){
+    dica="- Calculadora no topo"
+    mate-calc &
+    for i in $(seq 1 100); do
+        ID=$(wmctrl -lx | awk 'tolower($3) ~ /mate-calc/ {print $1; exit}')
+        if [ -n "$ID" ]; then
+            wmctrl -i -r "$ID" -b add,above
+            return $?
+        fi
+        sleep 0.1
+    done
+    return 1
+}
+
+xtdc_xtmnotopo(){
+    dica="- XTM no topo"
+    xfce4-taskmanager &
+    for i in $(seq 1 100); do
+        ID=$(wmctrl -lx | awk 'tolower($3) ~ /xfce4-taskmanager\.xfce4-taskmanager/ {print $1; exit}')
+        if [ -n "$ID" ]; then
+            wmctrl -i -r "$ID" -b add,above
+            return $?
+        fi
+        sleep 0.1
+    done
+    return 1
+}
+
+xtdc_loga(){
+    dica="- Escreve um log"
+    local msg="${1:-}"
+    local log_file="$PWD/$(date +'%Y_%m_%d')_log.txt"
+    echo "$msg" >> "$log_file"
+}
+
+xtdc_funcoes(){
+    awk '
+        function exibir(){
+            if (nome != "" && nome != "xtdc_funcoes") {
+                printf "\033[1;97m%s\033[0m \033[96m%s\033[0m\n", nome, dica
+            }
+        }
+
+        /^[[:space:]]*(function[[:space:]]+)?xtdc_[[:alnum:]_]+[[:space:]]*(\(\))?[[:space:]]*\{/ {
+            exibir()
+            linha = $0
+            sub(/^[[:space:]]*function[[:space:]]+/, "", linha)
+            sub(/^[[:space:]]*/, "", linha)
+            sub(/[[:space:]]*(\(\))?[[:space:]]*\{.*/, "", linha)
+            nome = linha
+            dica = ""
+            next
+        }
+
+        nome != "" && /^[[:space:]]*dica[[:space:]]*=/ {
+            dica = $0
+            sub(/^[^=]*=[[:space:]]*/, "", dica)
+            sub(/^["'\'']/, "", dica)
+            sub(/["'\''][[:space:]]*;?[[:space:]]*$/, "", dica)
+        }
+
+        END { exibir() }
+    ' "${BASH_SOURCE[0]}"
+}
+
+
+
+# =================================================
+# ===============FIM DOS MAIS USADOS===============
+# =================================================
+
+xxtdc_bkp_enhanced(){
+    local timestamp=$(date +"%Y_%m_%d_%H_%M_%S")
+    local backup_file="/xtdc/xtdc_bkp_${timestamp}.tar.gz"
+    local items=(
+        "/etc/skel"
+        "/usr/share/themes/xtdc_theme"
+        "/usr/share/icons/xtdc_icons"
+        "/usr/share/fonts/truetype/xtdc_ttf"
+    )
+
+    echo "📋 Itens no backup:"
+    printf "  ➔ %s\n" "${items[@]}"
+    
+    if ! tar -czf "$backup_file" "${items[@]}"; then
+        echo "❌ Erro no backup!"
+        return 1
+    fi
+
+    echo "✅ Backup criado: $backup_file ($(du -h "$backup_file" | cut -f1))"
+}
+
+xxtdc_bkp(){
+DIRETORIOS=(
+        "/etc/skel"
+        "/usr/share/icons/xtdc_icons"
+        "/usr/share/themes/xtdc_theme"
+        "/usr/share/themes/xtdc_dark"
+        "/usr/share/fonts/truetype/xtdc_ttf"
+        "/bin/xtdc"
+)
+
+# Nome do arquivo de backup com timestamp
+BACKUP_FILE="/xtdc/xtdc_bkp_$(date +'%Y_%m_%d_%H_%M_%S').tar.gz"
+
+# Mostra os diretórios que serão incluídos no backup
+echo "=============================================="
+echo "DIRETÓRIOS QUE SERÃO INCLUÍDOS NO BACKUP:"
+echo "----------------------------------------------"
+for dir in "${DIRETORIOS[@]}"; do
+    echo "- $dir"
+done
+echo "=============================================="
+echo ""
+
+# Pede confirmação antes de continuar
+read -p "Deseja continuar e criar o backup? (s/n) " -n 1 -r
+echo ""
+if [[ ! $REPLY =~ ^[Ss]$ ]]; then
+    echo "Backup cancelado pelo usuário."
+    exit 1
+fi
+
+echo "Criando backup: $BACKUP_FILE"
+tar -czf "$BACKUP_FILE" "${DIRETORIOS[@]}"
+
+# Verifica se o backup foi criado com sucesso
+if [ $? -eq 0 ]; then
+    echo "Backup criado com sucesso!"
+    echo "Tamanho do arquivo: $(du -h "$BACKUP_FILE" | cut -f1)"
+else
+    echo "Erro ao criar o backup!"
+    exit 1
+fi
+}
+
+xxtdc_bkp2(){
+    # Define o nome do arquivo com timestamp
+    local timestamp=$(date +"%Y_%m_%d_%H_%M_%S")
+    local output_file="/xtdc/xtdc_bkp_${timestamp}.tar.gz"
+
+    # Lista de arquivos/diretórios para incluir
+    local items_to_include=(
+        "/etc/skel"
+        "/usr/share/icons/xtdc_icons"
+        "/usr/share/themes/xtdc_theme"
+        "/usr/share/themes/xtdc_dark"
+        "/usr/share/fonts/truetype/xtdc_ttf"
+        "/bin/xtdc"
+    )
+    echo "📦 Criando arquivo $output_file..."
+    tar -czf "$output_file" "${items_to_include[@]}"
+    echo "✅ Arquivo criado: $output_file"
+}
+
+xxtdc_update_from_tar(){
+    local timestamp=$(date +"%Y_%m_%d_%H_%M_%S")
+    local downloaded_file="/xtdc/xtdc_zip_${timestamp}.tar.gz"
+    local tar_url="https://raw.githubusercontent.com/Pinhalito/xtdc/refs/heads/main/xtdc_zip.tar.gz"
+    echo "⬇️ Baixando arquivo de $tar_url..."
+    wget -q "$tar_url" -O "$downloaded_file"
+    echo "Arquivo baixado: $downloaded_file"
+    echo "📦 Extraindo arquivos..."
+    sudo tar -xzf "$downloaded_file" -C /
+    echo "✅ Atualização concluída!"
+}
+
+xxtdc_last(){
+# Últimas imagens abertas
+# grep -oP 'href="file://.*\.(png|jpg|jpeg)"' ~/.local/share/recently-used.xbel 
+    
+    
+echo "=== IMAGENS (MAIS RECENTES PRIMEIRO) ==="
+tac ~/.local/share/recently-used.xbel | grep -oP 'href="file://\K[^"]*\.(png|jpg|jpeg|gif|bmp|svg|webp)(?=")' | awk '!seen[$0]++'
+
+echo -e "\n=== VÍDEOS (MAIS RECENTES PRIMEIRO) ==="
+tac ~/.local/share/recently-used.xbel | grep -oP 'href="file://\K[^"]*\.(mp4|mkv|avi|mov|webm|flv|wmv)(?=")' | awk '!seen[$0]++'
+
+echo -e "\n=== MÚSICAS (MAIS RECENTES PRIMEIRO) ==="
+tac ~/.local/share/recently-used.xbel | grep -oP 'href="file://\K[^"]*\.(mp3|flac|wav|ogg|m4a|aac)(?=")' | awk '!seen[$0]++'
+
+echo -e "\n=== DOCUMENTOS (MAIS RECENTES PRIMEIRO) ==="
+tac ~/.local/share/recently-used.xbel | grep -oP 'href="file://\K[^"]*\.(pdf|docx?|odt|txt|rtf|epub)(?=")' | awk '!seen[$0]++'
+
+echo -e "\n=== PLANILHAS (MAIS RECENTES PRIMEIRO) ==="
+tac ~/.local/share/recently-used.xbel | grep -oP 'href="file://\K[^"]*\.(xlsx?|ods|csv)(?=")' | awk '!seen[$0]++'
+
+tac ~/.local/share/recently-used.xbel | grep -A 2 -P 'href="file://.*\.(mp4|mkv)' | grep -oP '(href="file://\K[^"]+|modified="\K[^"]+)'
+}
+
+xxtdc_lista_arquivos(){
+    cd "$1/.." || exit  # Sobe um nível
+    NOME_PASTA=$(basename "$1")
+    DATA=$(date +"%Y_%m_%d")
+    tree "$NOME_PASTA" > "${NOME_PASTA}_listadearquivos_${DATA}.txt"
+    xfce4-terminal -e "cat ${NOME_PASTA}_listadearquivos_${DATA}.txt"
+}
+
+xxtdc_last3(){
+    find ./ -type f -printf '%T@ %p\n' | sort -n | tail -n 10 | cut -d' ' -f2-
+}
+
+# =================================================
+# Chama a função principal se o script for executado diretamente
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    "$@"
+fi
+
+
