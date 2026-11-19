@@ -2,7 +2,7 @@
 #
 #######################
 #    ^...^  `^...^´   #
-#   / o,o \ / O,O \   #
+#   /_o,o_\ /_O,O_\   #
 #   |):::(| |):::(|   #
 # ====" "=====" "==== #
 #         TdC         #
@@ -15,9 +15,7 @@
 # Teoria do Orbital Molecular Inc.
 # Unidade Barão Geraldo CX
 #
-# 2026_11_17
-
-
+# 2026_11_18_18_15_34
 
 xtdc_carga(){
     dica="- Carrega as funções XTDC"
@@ -32,6 +30,15 @@ xtdc_limpa(){
      bleachbit -c --preset
      sudo bleachbit -c --preset
      notify-send -t 3000 -i dialog-information "Sistema limpo" "Limpo em: $(date +%H:%M:%S)"
+}
+
+xtdc_apt(){
+    dica="- Limpa o apt"
+    sudo apt update
+    sudo apt autoremove -y --purge
+    sudo apt autoremove -y
+    sudo apt autoclean
+    sudo apt clean
 }
 
 xtdc_som(){
