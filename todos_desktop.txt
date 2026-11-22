@@ -1,0 +1,891 @@
+=== ARQUIVO: time.desktop ===
+[Desktop Entry]
+Name=Hora e Data
+Comment=Hora e Data
+Exec=time-admin
+Icon=time-admin
+Terminal=false
+Type=Application
+Categories=Settings;
+StartupNotify=true
+X-Ubuntu-Gettext-Domain=gnome-system-tools
+
+=== ARQUIVO: transmission-gtk.desktop ===
+[Desktop Entry]
+Name=Transmission
+Comment=Torrent
+Keywords=torrents;
+Exec=transmission-gtk %U
+Icon=transmission
+Terminal=false
+TryExec=transmission-gtk
+Type=Application
+StartupNotify=true
+MimeType=application/x-bittorrent;x-scheme-handler/magnet;
+Categories=Network;
+X-Ubuntu-Gettext-Domain=transmission
+X-AppInstall-Keywords=torrent
+Actions=Pause;Minimize;
+Path=
+
+=== ARQUIVO: engrampa.desktop ===
+[Desktop Entry]
+Name=Zip
+Comment=Arquivos zipados
+TryExec=engrampa
+Exec=engrampa %U
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=zip
+Categories=Utility;
+MimeType=application/epub+zip;application/x-7z-compressed;application/x-7z-compressed-tar;application/x-ace;application/x-alz;application/x-arc;application/x-arj;application/x-brotli;application/x-brotli-compressed-tar;application/x-bzip;application/x-bzip-compressed-tar;application/x-bzip2;application/bzip2;application/x-bzip1;application/x-bzip1-compressed-tar;application/x-cabinet;application/x-cbr;application/x-cbz;application/x-cd-image;application/x-compress;application/x-compressed-tar;application/x-cpio;application/vnd.debian.binary-package;application/x-ear;application/x-ms-dos-executable;application/x-gtar;application/x-gzip;application/gzip;application/x-gzpostscript;application/x-java-archive;application/x-lha;application/x-lzh-compressed;application/x-lrzip;application/x-lrzip-compressed-tar;application/x-lzip;application/x-lzip-compressed-tar;application/x-lzma;application/x-lzma-compressed-tar;application/x-lzop;application/x-lzop-compressed-tar;application/x-ms-wim;application/x-rar;application/x-rar-compressed;application/x-rpm;application/x-source-rpm;application/x-rzip;application/x-tar;application/x-tarz;application/x-stuffit;application/x-war;application/x-xz;application/x-xz-compressed-tar;application/x-zip;application/x-zip-compressed;application/x-zoo;application/zstd;application/x-zstd-compressed-tar;application/zip;application/x-archive;application/vnd.ms-cab-compressed;
+Keywords=zip;
+
+=== ARQUIVO: thunar.desktop ===
+[Desktop Entry]
+Name=Gerenciador de Arquivos
+Comment=Gerenciador de Arquivos (Explorer)
+Exec=thunar %F
+Icon=thunar
+Terminal=false
+Type=Application
+Categories=Utility;
+NoDisplay=true
+
+=== ARQUIVO: synaptic.desktop ===
+[Desktop Entry]
+Name=Synaptic
+Comment=Gerenciador de pacotes 
+Exec=synaptic-pkexec
+Icon=synaptic
+Terminal=false
+Type=Application
+Categories=System
+X-Ubuntu-Gettext-Domain=synaptic
+StartupNotify=true
+StartupWMClass=synaptic
+
+=== ARQUIVO: lightdm-gtk-greeter-settings.desktop ===
+[Desktop Entry]
+Name=Configurações tela de login
+Comment=Configurações tela de login
+Categories=Settings;
+Keywords=tela;login;
+Exec=lightdm-gtk-greeter-settings-pkexec
+Icon=homeazulportaaberta
+Terminal=false
+Type=Application
+X-XfcePluggable=true
+NoDisplay=true
+
+=== ARQUIVO: org.xfce.PanelProfiles.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Perfis do Painel
+NoDisplay=true
+Comment=Salve e restaure a configuração do seu painel
+Icon=org.xfce.PanelProfiles
+OnlyShowIn=XFCE;
+Exec=xfce4-panel-profiles
+Actions=
+Categories=Settings;
+Keywords=Configuração;Usuário;
+StartupNotify=true
+
+=== ARQUIVO: xfce4-accessibility-settings.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Acessibilidade
+NoDisplay=true
+Comment=Melhore a acessibilidade do teclado e do mouse
+Icon=preferences-desktop-accessibility
+OnlyShowIn=XFCE;
+Exec=xfce4-accessibility-settings
+Actions=
+Categories=Settings;
+StartupNotify=true
+
+=== ARQUIVO: mate-calc.desktop ===
+[Desktop Entry]
+Name=Calculadora
+Comment=Calculadora
+Exec=mate-calc
+Icon=accessories-calculator
+Terminal=false
+Type=Application
+Categories=Utility;
+Path=
+StartupNotify=false
+
+=== ARQUIVO: libreoffice.desktop ===
+[Desktop Entry]
+Name=LibreOffice
+Comment=LibreOffice
+Exec=/opt/appimages/LibreOffice.AppImage
+Icon=libreoffice
+Terminal=false
+Type=Application
+Categories=Office;
+
+=== ARQUIVO: pavucontrol.desktop ===
+[Desktop Entry]
+Name=Volume
+Comment=Ajuste o volume
+Exec=pavucontrol
+Icon=multimedia-volume-control
+StartupNotify=true
+Type=Application
+Categories=AudioVideo;
+
+=== ARQUIVO: xfce-settings-manager.desktop ===
+[Desktop Entry]
+Name=Settings Manager
+Comment=Graphical Settings Manager for Xfce 4
+Exec=xfce4-settings-manager
+Icon=preferences-desktop
+Terminal=false
+Type=Application
+Categories=Settings;
+OnlyShowIn=XFCE;
+X-XfceSettingsManagerHidden=true
+NoDisplay=true
+
+=== ARQUIVO: catfish.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Pesquisador de arquivos Catfish
+Comment=Pesquisar no sistema de arquivos
+Icon=catfish
+Exec=/usr/bin/catfish %f
+Actions=
+MimeType=
+Categories=Utility;
+Keywords=arquivos;buscar;localizar;encontrar;pesquisar;
+StartupWMClass=catfish
+Hidden=true
+
+=== ARQUIVO: python3.13.desktop ===
+[Desktop Entry]
+Name=Python (v3.13)
+Comment=Python Interpreter (v3.13)
+Exec=/usr/bin/python3.13
+Icon=/usr/share/pixmaps/python3.13.xpm
+Terminal=true
+Type=Application
+Categories=Development;
+StartupNotify=true
+NoDisplay=true
+
+=== ARQUIVO: menulibre.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Menu Editor
+Comment=Add or remove applications from the menu
+Icon=menulibre
+OnlyShowIn=Budgie;Cinnamon;GNOME;KDE;LXDE;LXQt;MATE;Pantheon;Unity;XFCE;
+Exec=/usr/bin/menulibre
+Categories=Settings;
+Keywords=Configuration;Menu;User;
+StartupNotify=true
+Terminal=false
+X-Ubuntu-Gettext-Domain=menulibre
+NoDisplay=true
+
+=== ARQUIVO: xfce-backdrop-settings.desktop ===
+[Desktop Entry]
+Name=Área de trabalho
+Comment=Configurações
+Exec=xfdesktop-settings
+Icon=preferences-desktop-wallpaper
+Terminal=false
+Type=Application
+Categories=Settings;
+OnlyShowIn=XFCE;
+StartupNotify=true
+X-XfcePluggable=true
+X-XfceHelpComponent=xfdesktop
+X-XfceHelpPage=start
+X-XfceHelpVersion=4.14
+Hidden=true
+
+=== ARQUIVO: gparted.desktop ===
+[Desktop Entry]
+Name=GParted
+Comment=Crie, reorganize e exclua partições
+Exec=/usr/sbin/gparted %f
+Icon=gparted
+Terminal=false
+Type=Application
+Categories=System;
+Keywords=Partição;Disco;HDD;SSD;
+
+=== ARQUIVO: xfce4-screenshooter.desktop ===
+[Desktop Entry]
+Name=Screenshot
+Comment=Take screenshots of the entire screen, of the active window or of a region
+Icon=xfce4-screenshooter
+Exec=xfce4-screenshooter
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Utility;
+Path=
+NoDisplay=true
+
+=== ARQUIVO: xfce4-about.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Sobre o Xfce
+NoDisplay=true
+Comment=Informação sobre o Ambiente de área de trabalho Xfce
+Icon=help-about
+OnlyShowIn=XFCE;
+Exec=xfce4-about
+Actions=
+Categories=Utility;
+
+=== ARQUIVO: Inkscape.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Inkscape
+Comment=Criar e editar imagens e Gráficos Vetoriais Escaláveis
+Exec=inkscape %F
+TryExec=inkscape
+Terminal=false
+Icon=inkscape
+MimeType=image/svg+xml;image/svg+xml-compressed;
+Categories=Graphics;
+Keywords=svg;imagem;editor;vetor;desenho;
+StartupNotify=true
+
+=== ARQUIVO: thunar-settings.desktop ===
+[Desktop Entry]
+Name=File Manager Settings
+Comment=Configure the Thunar file manager
+Exec=thunar-settings
+Icon=system-file-manager
+Terminal=false
+Type=Application
+Categories=Settings;
+StartupNotify=true
+NoDisplay=true
+
+=== ARQUIVO: xfce4-terminal.desktop ===
+[Desktop Entry]
+Name=Terminal
+Comment=Terminal
+Exec=xfce4-terminal
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=true
+Actions=preferences;
+
+=== ARQUIVO: users.desktop ===
+[Desktop Entry]
+Name=Usuários e grupos
+Comment=Usuários e grupos
+Exec=users-admin
+Icon=users-admin
+Terminal=false
+Type=Application
+Categories=System;
+Path=
+StartupNotify=false
+
+=== ARQUIVO: thunar-volman-settings.desktop ===
+[Desktop Entry]
+Name=Removable Drives and Media
+Comment=Configure management of removable drives and media
+Exec=thunar-volman-settings
+Icon=drive-removable-media
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Settings;
+X-XfcePluggable=true
+X-XfceHelpComponent=thunar
+X-XfceHelpPage=using-removable-media
+NoDisplay=true
+
+=== ARQUIVO: smplayer.desktop ===
+[Desktop Entry]
+Categories=AudioVideo;
+Comment=Player multimídia
+Exec=smplayer %U
+Icon=smplayer
+MimeType=audio/ac3;audio/mp4;audio/mpeg;audio/vnd.rn-realaudio;audio/vorbis;audio/x-adpcm;audio/x-matroska;audio/x-mp2;audio/x-mp3;audio/x-ms-wma;audio/x-vorbis;audio/x-wav;audio/mpegurl;audio/x-mpegurl;audio/x-pn-realaudio;audio/x-scpls;audio/aac;audio/flac;audio/ogg;video/avi;video/mp4;video/flv;video/mpeg;video/quicktime;video/vnd.rn-realvideo;video/x-matroska;video/x-ms-asf;video/x-msvideo;video/x-ms-wmv;video/x-ogm+ogg;video/x-theora;video/webm;
+Name=SMPlayer
+Type=Application
+
+=== ARQUIVO: exo-preferred-applications.desktop ===
+[Desktop Entry]
+Exec=/usr/bin/xfce4-mime-settings
+Icon=preferences-desktop-default-applications
+Type=Application
+Categories=Settings;
+OnlyShowIn=XFCE;
+Terminal=false
+StartupNotify=true
+Name=Aplicativos preferidos
+Comment=Aplicativos preferidos
+X-XfcePluggable=true
+X-XfceHelpComponent=exo
+X-XfceHelpPage=preferred-applications
+X-AppStream-Ignore=True
+
+=== ARQUIVO: xfce4-web-browser.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Navegador web
+NoDisplay=true
+Comment=Navegar pela web
+Icon=org.xfce.webbrowser
+OnlyShowIn=XFCE;
+Exec=exo-open --launch WebBrowser %u
+Actions=
+Categories=Network;
+Keywords=internet;web;navegador;surfar;explorar;xfce;
+StartupNotify=true
+
+=== ARQUIVO: install-system.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Instalar OVO (remasterização linux)
+Comment=Instalar OVO (remasterização linux)
+Exec=pkexec eggs sysinstall
+Icon=penguins-eggs
+Terminal=false
+Categories=System;
+NoDisplay=true
+
+=== ARQUIVO: xfce4-clipman.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Área de transferência
+Comment=Área de transferência
+TryExec=xfce4-clipman
+Exec=xfce4-clipman
+Icon=clipman
+Terminal=false
+Categories=Utility;
+OnlyShowIn=XFCE;GNOME;X-Cinnamon;
+StartupNotify=false
+
+=== ARQUIVO: evince.desktop ===
+[Desktop Entry]
+Name=Visualizador de documentos PDF
+Comment=Visualizador de documentos PDF
+Exec=evince %U
+Icon=evince
+Terminal=false
+Type=Application
+Categories=Office
+MimeType=application/pdf;application/x-bzpdf;application/x-gzpdf;application/x-xzpdf;application/x-ext-pdf;application/postscript;application/x-bzpostscript;application/x-gzpostscript;image/x-eps;image/x-bzeps;image/x-gzeps;application/x-ext-ps;application/x-ext-eps;application/illustrator;application/x-dvi;application/x-bzdvi;application/x-gzdvi;application/x-ext-dvi;image/vnd.djvu+multipage;application/x-ext-djv;application/x-ext-djvu;image/tiff;application/x-cbr;application/x-cbz;application/x-cb7;application/x-cbt;application/x-ext-cbr;application/x-ext-cbz;application/vnd.comicbook+zip;application/x-ext-cb7;application/x-ext-cbt;application/oxps;application/vnd.ms-xpsdocument;
+
+=== ARQUIVO: ktelnetservice6.desktop ===
+[Desktop Entry]
+Type=Application
+Exec=ktelnetservice6 %u
+Icon=utilities-terminal
+MimeType=x-scheme-handler/telnet;x-scheme-handler/rlogin;x-scheme-handler/ssh;
+
+NoDisplay=true
+
+Name=KTelnetService
+
+=== ARQUIVO: xfce4-notifyd-config.desktop ===
+[Desktop Entry]
+Name=Notificações
+Comment=Notificações
+Exec=xfce4-notifyd-config
+Icon=preferences-system-notifications
+Terminal=false
+StartupNotify=true
+Type=Application
+OnlyShowIn=XFCE;
+Categories=Settings
+X-XfcePluggable=true
+X-XfceHelpComponent=notifyd
+X-XfceHelpPage=start
+
+=== ARQUIVO: bleachbit-root.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Limpeza do sistema (root)
+Comment=Limpeza do sistema
+TryExec=pkexec
+Exec=pkexec bleachbit
+Icon=bleachbit
+Categories=System
+Keywords=limpa;limpeza;
+StartupNotify=true
+
+=== ARQUIVO: xfce4-session-logout.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Encerrar sessão
+NoDisplay=true
+Comment=Deslogar do ambiente Xfce
+Icon=system-log-out
+OnlyShowIn=XFCE;
+Exec=xfce4-session-logout
+Actions=
+Categories=System;
+
+=== ARQUIVO: qt5ct.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Qt5 Settings
+NoDisplay=true
+Comment=Qt5 Configuration Tool
+Icon=preferences-desktop-theme
+Exec=qt5ct
+Actions=
+Categories=Settings;
+Keywords=settings;desktop;qt;qtsettings;qt5;
+
+=== ARQUIVO: xfce-display-settings.desktop ===
+[Desktop Entry]
+Name=Monitor
+Comment=Configurações do monitor
+Exec=xfce4-display-settings
+Icon=video-display
+Terminal=false
+Type=Application
+Categories=Settings;
+StartupNotify=true
+OnlyShowIn=XFCE;
+X-XfcePluggable=true
+X-XfceHelpPage=display
+
+=== ARQUIVO: xfce4-settings-editor.desktop ===
+[Desktop Entry]
+Name=Settings Editor
+Comment=Graphical settings editor for Xfconf
+Exec=xfce4-settings-editor
+Icon=preferences-system
+Terminal=false
+Type=Application
+Categories=Settings;
+OnlyShowIn=XFCE;
+X-XfceSettingsManagerHidden=true
+X-XfcePluggable=true
+NoDisplay=true
+
+=== ARQUIVO: mpv.desktop ===
+[Desktop Entry]
+Type=Application
+Name=mpv Media Player
+Comment=Play movies and songs
+Icon=mpv
+TryExec=mpv
+Exec=mpv --player-operation-mode=pseudo-gui -- %U
+Terminal=false
+Categories=AudioVideo;
+MimeType=
+Keywords=mpv;media;player;video;audio;tv;
+NoDisplay=true
+
+=== ARQUIVO: xfce4-run.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Executar programa...
+NoDisplay=true
+Comment=Digite um comando que você deseja executar
+Icon=org.xfce.appfinder
+OnlyShowIn=XFCE;
+Exec=xfce4-appfinder --collapsed
+Actions=
+Categories=Utility;
+Keywords=executar;comando;aplicativo;programa;localizador;pesquisa;lançador;tudo;spotlight;sherlock;applesearch;unity dash;krunner;synapse;ulauncher;launchy;gnome do;pie;apwal;recoll;alfred;quicksilver;trackerr;beagle;kupfer;
+StartupNotify=true
+
+=== ARQUIVO: systemsettings.desktop ===
+[Desktop Entry]
+Exec=systemsettings
+Icon=preferences-system
+Type=Application
+SingleMainWindow=true
+X-DocPath=systemsettings/index.html
+StartupNotify=true
+X-KDE-Shortcuts=Tools
+
+OnlyShowIn=KDE;
+Actions=kcm-lookandfeel;kcm-users;kcm-screenlocker;kcm-powerdevilprofilesconfig;kcm-kscreen;
+
+Name=System Settings
+
+Comment=Configuration tools for your computer
+X-DBUS-StartupType=Unique
+X-DBUS-ServiceName=org.kde.systemsettings
+Categories=Settings;
+Keywords=systemsettings
+
+[Desktop Action kcm-lookandfeel]
+Name=Global Theme
+Icon=preferences-desktop-theme-global
+Exec=systemsettings kcm_lookandfeel
+
+[Desktop Action kcm-users]
+Name=Users
+Icon=preferences-system-users
+Exec=systemsettings kcm_users
+
+[Desktop Action kcm-screenlocker]
+Name=Screen Locking
+Icon=preferences-desktop-user-password
+Exec=systemsettings kcm_screenlocker
+
+[Desktop Action kcm-powerdevilprofilesconfig]
+Name=Power Management
+Icon=preferences-system-power-management
+Exec=systemsettings kcm_powerdevilprofilesconfig
+
+[Desktop Action kcm-kscreen]
+Name=Display Configuration
+Icon=preferences-desktop-display-randr
+Exec=systemsettings kcm_kscreen
+
+=== ARQUIVO: baobab.desktop ===
+[Desktop Entry]
+Name=Analisador de uso de disco
+Comment=Verifique o tamanho de pastas e o espaço disponível em disco
+Keywords=armazenamento;espaço;limpeza;
+Exec=baobab
+Icon=baobab
+Terminal=false
+Type=Application
+Categories=Utility;
+
+=== ARQUIVO: htop.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Htop
+NoDisplay=true
+Comment=Mostra os processos do sistema
+Icon=htop
+Exec=htop
+Terminal=true
+Actions=
+Categories=System;
+Keywords=system;process;task;
+
+=== ARQUIVO: calamares.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Sistema de Instalação
+NoDisplay=true
+Comment=Calamares — Instalador de Sistema
+Icon=calamares
+TryExec=calamares
+Exec=sh -c "pkexec calamares"
+Actions=
+Categories=System;
+Keywords=calamares;system;installer;
+StartupNotify=true
+
+=== ARQUIVO: xfce4-clipman-settings.desktop ===
+[Desktop Entry]
+Name=Clipboard Manager Settings
+Comment=Customize your clipboard
+Exec=xfce4-clipman-settings
+Icon=clipman
+Terminal=false
+StartupNotify=true
+Type=Application
+OnlyShowIn=XFCE;
+Categories=Settings;
+X-XfceHelpComponent=clipman
+X-XfceHelpPage=start
+NoDisplay=true
+
+=== ARQUIVO: panel-desktop-handler.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Create Launcher on the panel
+Comment=Add a new launcher to the panel based on the information of this desktop file
+Exec=xfce4-panel --add=launcher %u
+Icon=application-x-executable
+Terminal=false
+NoDisplay=true
+StartupNotify=false
+MimeType=application/x-desktop;
+
+=== ARQUIVO: smplayer_enqueue.desktop ===
+[Desktop Entry]
+Categories=AudioVideo;
+Exec=smplayer -add-to-playlist %U
+Icon=smplayer
+MimeType=audio/ac3;audio/mp4;audio/mpeg;audio/vnd.rn-realaudio;audio/vorbis;audio/x-adpcm;audio/x-matroska;audio/x-mp2;audio/x-mp3;audio/x-ms-wma;audio/x-vorbis;audio/x-wav;audio/mpegurl;audio/x-mpegurl;audio/x-pn-realaudio;audio/x-scpls;audio/aac;audio/flac;audio/ogg;video/avi;video/mp4;video/flv;video/mpeg;video/quicktime;video/vnd.rn-realvideo;video/x-matroska;video/x-ms-asf;video/x-msvideo;video/x-ms-wmv;video/x-ogm;video/x-theora;video/webm;
+Name=Colocar na fila do SMPlayer
+Comment=Player multimídia
+Type=Application
+NoDisplay=true
+
+=== ARQUIVO: brave-browser.desktop ===
+[Desktop Entry]
+Name=Brave
+Comment=Navegador de internet
+Exec=/usr/bin/brave-browser-stable %U
+StartupNotify=true
+StartupWMClass=brave-browser
+Terminal=false
+Icon=brave-browser
+Type=Application
+Categories=Network;
+MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/chromium;
+Actions=new-window;new-private-window;
+
+=== ARQUIVO: exo-web-browser.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Navegador web
+NoDisplay=true
+Comment=Navegar pela web
+Icon=web-browser
+OnlyShowIn=XFCE;
+Exec=exo-open --launch WebBrowser %u
+Actions=
+Categories=Network;
+StartupNotify=true
+
+=== ARQUIVO: zutty.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Zutty
+NoDisplay=true
+Comment=Zero-cost Unicode Teletype
+Icon=zutty
+Exec=zutty
+Actions=
+Categories=System;
+Keywords=shell;prompt;command;commandline;cmd;
+
+=== ARQUIVO: xfce-mouse-settings.desktop ===
+[Desktop Entry]
+Name=Mouse
+Comment=Configurações do mouse
+Exec=xfce4-mouse-settings
+Icon=input-mouse
+Terminal=false
+Type=Application
+Categories=Settings;
+StartupNotify=true
+OnlyShowIn=XFCE;
+X-XfcePluggable=true
+X-XfceHelpPage=mouse
+
+=== ARQUIVO: xfce4-mime-settings.desktop ===
+[Desktop Entry]
+Name=Editor de tipos de arquivos
+Comment=Programas padrão para tipos de arquivos
+Exec=xfce4-mime-settings
+Icon=preferences-system
+Terminal=false
+Type=Application
+Categories=Settings;
+StartupNotify=true
+OnlyShowIn=XFCE;
+X-XfcePluggable=true
+
+=== ARQUIVO: xfce-keyboard-settings.desktop ===
+[Desktop Entry]
+Name=Teclado
+Comment=Teclado
+Exec=xfce4-keyboard-settings
+Icon=preferences-desktop-keyboard
+Terminal=false
+Type=Application
+Categories=Settings;
+StartupNotify=true
+OnlyShowIn=XFCE;
+X-XfcePluggable=true
+X-XfceHelpPage=keyboard
+Keywords=atalho;
+
+=== ARQUIVO: xfce4-taskmanager.desktop ===
+[Desktop Entry]
+Name=Gerenciador de tarefas
+Comment=Gerenciador de tarefas
+Exec=xfce4-taskmanager
+Icon=utilities-system-monitor
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Utility;
+
+=== ARQUIVO: google-chrome.desktop ===
+[Desktop Entry]
+Name=Google Chrome
+Comment=Navegador de internet
+Exec=/usr/bin/google-chrome-stable %U
+StartupNotify=true
+StartupWMClass=google-chrome
+Terminal=false
+Icon=google-chrome
+Type=Application
+Categories=Network;
+MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/google-chrome;
+Actions=new-window;new-private-window;
+
+=== ARQUIVO: bleachbit.desktop ===
+[Desktop Entry]
+Name=Limpeza do sistema
+Comment=Limpeza do sistema
+Exec=bleachbit
+Icon=bleachbit
+Terminal=false
+Type=Application
+Categories=System
+Keywords=limpa;limpeza;
+
+=== ARQUIVO: org.inkscape.Inkscape.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Inkscape
+Comment=Criar e editar imagens e Gráficos Vetoriais Escaláveis
+Exec=inkscape %F
+TryExec=inkscape
+Terminal=false
+Icon=inkscape
+MimeType=image/svg+xml;image/svg+xml-compressed;
+Categories=Graphics
+Keywords=svg;imagem;editor;vetor;desenho;
+StartupNotify=true
+NoDisplay=true
+
+=== ARQUIVO: xfce-session-settings.desktop ===
+[Desktop Entry]
+Name=Sessão e Inicialização
+Comment=Sessão e Inicialização
+Exec=/usr/bin/xfce4-session-settings
+Icon=1dialog-error
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Settings
+OnlyShowIn=XFCE;
+X-XfcePluggable=true
+X-XfceHelpComponent=xfce4-session
+X-XfceHelpPage=preferences
+Path=
+
+=== ARQUIVO: xfce4-file-manager.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Gerenciador de arquivos
+NoDisplay=true
+Comment=Navegar pelo sistema de arquivos
+Icon=org.xfce.filemanager
+OnlyShowIn=XFCE;
+Exec=exo-open --launch FileManager %u
+Actions=
+Categories=Utility;
+Keywords=arquivo;gerenciador;explorador;navegador;sistema de arquivos;diretório;pasta;xfce;
+StartupNotify=true
+
+=== ARQUIVO: xdg-desktop-portal-gtk.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Portal
+Icon=applications-system-symbolic
+Exec=/usr/libexec/xdg-desktop-portal-gtk
+NoDisplay=true
+
+=== ARQUIVO: rclone.desktop ===
+[Desktop Entry]
+Name=Rclone
+Comment=Gerenciador de contas de nuvem
+Exec=rclone gui
+Icon=rclone-browser
+Terminal=false
+Type=Application
+Categories=Network
+Keywords=nuvem;drive;dropbox;
+
+=== ARQUIVO: thunar-bulk-rename.desktop ===
+[Desktop Entry]
+Name=Bulk Rename
+Comment=Rename Multiple Files
+Exec=/usr/bin/thunar --bulk-rename %F
+Icon=thunar
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Utility;
+NoDisplay=true
+
+=== ARQUIVO: lightdm-settings.desktop ===
+[Desktop Entry]
+Type=Application
+Name=Configurações tela de login
+Comment=Configurações tela de login
+Icon=lightdm-settings
+Exec=pkexec lightdm-gtk-greeter-settings
+Actions=
+Categories=Settings;
+StartupNotify=true
+Path=
+Terminal=false
+Hidden=true
+
+=== ARQUIVO: xfce4-appearance-settings.desktop ===
+[Desktop Entry]
+Name=Aparência
+Comment=Configuração de ícones e temas
+Exec=xfce4-appearance-settings
+Icon=preferences-desktop-theme
+Terminal=false
+Type=Application
+Categories=Settings;
+
+=== ARQUIVO: xfce4-appfinder.desktop ===
+[Desktop Entry]
+Exec=xfce4-appfinder
+Icon=edit-find
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Utility;
+Name=Localizador de Aplicativos
+Comment=Localizador de Aplicativos
+Hidden=true
+
+=== ARQUIVO: geany.desktop ===
+[Desktop Entry]
+Name=Geany (Bloco de Notas)
+Comment=Editor de texto simples (Bloco de Notas)
+Exec=geany %F
+Icon=geany
+Terminal=false
+Type=Application
+Categories=Office
+MimeType=text/plain;text/x-chdr;text/x-csrc;text/x-c++hdr;text/x-c++src;text/x-java;text/x-dsrc;text/x-pascal;text/x-perl;text/x-python;application/x-php;application/x-httpd-php3;application/x-httpd-php4;application/x-httpd-php5;application/xml;text/html;text/css;text/x-sql;text/x-diff;
+
+=== ARQUIVO: xfce4-terminal-settings.desktop ===
+[Desktop Entry]
+Name=Xfce Terminal
+Comment=Configure Xfce Terminal
+Exec=xfce4-terminal --preferences
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=Settings;
+StartupNotify=true
+NotShowIn=GNOME;
+NoDisplay=true
+
+=== ARQUIVO: eog.desktop ===
+[Desktop Entry]
+Name=Visualizador de imagens
+Comment=Visualizador de imagens
+Exec=eog %U
+Icon=eog
+Terminal=false
+Type=Application
+Categories=Graphics
+MimeType=image/bmp;image/gif;image/jpeg;image/jpg;image/pjpeg;image/png;image/tiff;image/x-bmp;image/x-gray;image/x-icb;image/x-ico;image/x-png;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-xbitmap;image/x-xpixmap;image/x-pcx;image/svg+xml;image/svg+xml-compressed;image/vnd.wap.wbmp;
+
