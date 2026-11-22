@@ -15,11 +15,8 @@
 # Teoria do Orbital Molecular Inc.
 # Unidade Barão Geraldo CX
 #
-# 2026_11_22_03_39_02
+# 2026_11_22_13_35_40
 
-
-# Obtém o conteúdo da área de transferência.
-# As aspas preservam caracteres especiais, como &, ?, = e #.
 
 export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
 
@@ -52,22 +49,15 @@ echo "$URL"
 echo
 echo "Escolha o tipo de download:"
 echo
-echo "1) MP4 compatível com WhatsApp — até 720p"
-echo "2) Live desde o início — MKV"
-echo "3) MP4 original — sem conversão completa"
-echo "4) Melhor qualidade disponível — MKV"
-echo "5) MP4 compatível — sem limite de resolução"
-echo "6) MP4 compatível — usando o título do vídeo"
+echo "1) MP4"
+echo "2) MP3"
 echo "0) Cancelar"
 echo
-
-read -rp "Digite uma opção [0-6]: " OPCAO
+read -rp "Digite uma opção: " OPCAO
 
 case "$OPCAO" in
 
     1)
-        # MP4 compatível com WhatsApp:
-        # até 720p, H.264, AAC e tamanho reduzido.
         yt-dlp \
             -f "bv*[height<=720][vcodec^=avc1][ext=mp4]+ba[acodec^=mp4a][ext=m4a]/b[height<=720][ext=mp4]" \
             --merge-output-format mp4 \
@@ -75,76 +65,16 @@ case "$OPCAO" in
             --postprocessor-args "VideoConvertor:-c:v libx264 -preset veryfast -crf 25 -c:a aac -b:a 128k -pix_fmt yuv420p -movflags +faststart" \
             "$URL"
         ;;
-
+        
     2)
-        # Live desde o início, salvando no contêiner MKV.
         yt-dlp \
-            -f "bv*+ba/b" \
-            --live-from-start \
-            --merge-output-format mkv \
-            "$URL"
+        -x \
+        --audio-format mp3 \
+        --audio-quality 0 \
+        "$URL"
         ;;
 
-    3)
-        # MP4 original, sem conversão completa.
-        yt-dlp \
-            -f "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]" \
-            --merge-output-format mp4 \
-            "$URL"
-        ;;
-
-
-
-    4)
-        # Melhor qualidade disponível, sem limite de resolução.
-        # Salva no contêiner MKV.
-        yt-dlp \
-            -f "bv*+ba/b" \
-            --merge-output-format mkv \
-            "$URL"
-        ;;
-
-    5)
-        # MP4 compatível, sem limite de resolução.
-        # Converte para H.264 + AAC.
-        yt-dlp \
-            -f "bv*[vcodec^=avc1][ext=mp4]+ba[acodec^=mp4a][ext=m4a]/b[ext=mp4]" \
-            --merge-output-format mp4 \
-            --recode-video mp4 \
-            --postprocessor-args "VideoConvertor:-c:v libx264 -c:a aac -pix_fmt yuv420p -movflags +faststart" \
-            "$URL"
-        ;;
-
-    6)
-        # MP4 compatível usando o título do vídeo.
-        yt-dlp \
-            -f "bv*[vcodec^=avc1][ext=mp4]+ba[acodec^=mp4a][ext=m4a]/b[ext=mp4]" \
-            --merge-output-format mp4 \
-            --recode-video mp4 \
-            --postprocessor-args "VideoConvertor:-c:v libx264 -c:a aac -pix_fmt yuv420p -movflags +faststart" \
-            -o "%(title)s.%(ext)s" \
-            "$URL"
-        ;;
-        
-        
-
-#yt-dlp \
-#    -x \
-#    --audio-format mp3 \
-#    --audio-quality 0 \
-#    -a "$URL" 
-        
-#        7)
-#        # MP3 usando o título do vídeo.
-#        yt-dlp \
-#        --cookies-from-browser brave+gnomekeyring \
-#        -x \
-#        --audio-format mp3 \
-#        --audio-quality 0 \
-#        -o "%(title)s.%(ext)s" \
-#        "C8sNlTAZ9rg"
-#        ;;      
-        0)
+    0)
         echo "Operação cancelada."
         exit 0
         ;;
@@ -155,11 +85,3 @@ case "$OPCAO" in
         ;;
 
 esac
-
-
-#yt-dlp \
-#-x \
-#--audio-format mp3 \
-#--audio-quality 0 \
-#"$URL"
-  
