@@ -15,7 +15,9 @@
 # Teoria do Orbital Molecular Inc.
 # Unidade Barão Geraldo CX
 #
-# 2026_11_18_18_15_34
+# 2026_11_22_18_33_58
+
+
 
 xtdc_carga(){
     dica="- Carrega as funções XTDC"
@@ -25,11 +27,129 @@ xtdc_carga(){
     fi
 }
 
+xtdc_baixayt(){
+dica="- Baixa MP3 e MP4 do Youtube"
+    
+# Garante que yt-dlp e utilitários locais estejam no PATH.
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
+
+
+# Lê o clipboard, removendo quebras de linha e caracteres de retorno.
+URL="$(xclip -selection clipboard -o | tr -d '\r\n')"
+
+# Remove espaços no início e no final (trim).
+URL="${URL#"${URL%%[![:space:]]*}"}"
+URL="${URL%"${URL##*[![:space:]]}"}"
+
+# Verifica se o conteúdo parece ser uma URL válida
+# ou uma ID de vídeo com 11 caracteres.
+if [[ ! "$URL" =~ ^https?://[^[:space:]]+$ &&
+      ! "$URL" =~ ^[A-Za-z0-9_-]{11}$ ]]; then
+
+    echo "Erro: o clipboard não contém uma URL ou ID válida." && notify-send -t 3000 -i dialog-information "URL INVÁLIDA"
+    echo "Conteúdo encontrado: $URL"
+    exit 1
+fi
+
+# Se o clipboard contiver somente uma ID, transforma em URL do YouTube.
+if [[ "$URL" =~ ^[A-Za-z0-9_-]{11}$ ]]; then
+    URL="https://www.youtube.com/watch?v=$URL"
+fi
+
+# Menu de opções
+echo
+echo "URL/ID detectada:"
+echo "$URL"
+echo
+echo "Escolha o tipo de download:"
+echo
+echo "1) MP4"
+echo "2) MP3"
+echo "0) Cancelar"
+echo
+read -rp "Digite uma opção: " OPCAO
+
+case "$OPCAO" in
+
+    1)
+    cd "$HOME/Vídeos" || exit 1
+        yt-dlp \
+        -f "bv*[height<=720][vcodec^=avc1][ext=mp4]+ba[acodec^=mp4a][ext=m4a]/b[height<=720][ext=mp4]" \
+        --merge-output-format mp4 \
+        --recode-video mp4 \
+        --postprocessor-args "VideoConvertor:-c:v libx264 -preset veryfast -crf 25 -c:a aac -b:a 128k -pix_fmt yuv420p -movflags +faststart" \
+        --replace-in-metadata "title" "[^\w\s.-]" "" \
+        "$URL"
+        notify-send -t 3000 -i simplescreenrecorder "Vídeo baixado"
+        ;;
+
+    2)
+    cd "$HOME/Vídeos" || exit 1
+        yt-dlp \
+        -x \
+        --audio-format mp3 \
+        --audio-quality 0 \
+        --replace-in-metadata "title" "[^\w\s.-]" "" \
+        "$URL"
+        notify-send -t 3000 -i audio-mpeg "MP3 baixado"
+        ;;
+
+    0)
+        echo "Operação cancelada."
+        exit 0
+        ;;
+
+    *)
+        # Qualquer entrada que não seja 0, 1 ou 2.
+        echo "Erro: opção inválida."
+        exit 1
+        ;;
+
+esac
+}
+
 xtdc_limpa(){
      dica="- Limpa o sistema usando o Bleachbit"
      bleachbit -c --preset
      sudo bleachbit -c --preset
      notify-send -t 3000 -i dialog-information "Sistema limpo" "Limpo em: $(date +%H:%M:%S)"
+     #xtdc_loga "Sistema limpo em: $(date +%H:%M:%S)"
+     echo "Sistema limpo em: $(date +%Y_%m_%d_%H_%M_%S)" >> $HOME/.bash_history
+}
+
+xtdc_salva() {
+     dica="- Salva saída do terminal"
+    script -q "$HOME/saida_terminal_$(date +%Y_%m_%d).txt"
+}
+
+xtdc_boot(){
+    dica="- Salva saída do boot"
+    sudo echo loga
+    journalctl -b > ~/boot-log.txt
+    sudo dmesg > ~/boot-dmesg.txt
+}
+
+xtdc_dormir(){
+    dica="- Suspende o sistema por um tempo"    
+set -e
+
+printf "Suspender por quantos minutos? "
+read -r MIN
+
+# Valida se foi digitado um número inteiro maior que zero
+if ! [[ "$MIN" =~ ^[0-9]+$ ]] || [ "$MIN" -le 0 ]; then
+    echo "Por favor, digite um número válido de minutos (ex: 30)."
+    exit 1
+fi
+
+# Converte minutos para segundos e calcula a hora prevista de retorno
+SEC=$((MIN * 60))
+WAKEUP_TIME=$(date -d "+${SEC} seconds" "+%H:%M:%S")
+
+echo "Iniciando suspensão: $(date '+%H:%M:%S') — retorno previsto às $WAKEUP_TIME ($MIN min)..."
+sudo rtcwake -m mem -s "$SEC"
+
+echo "Sistema retomado: $(date '+%H:%M:%S')"
 }
 
 xtdc_apt(){
@@ -69,7 +189,6 @@ dpkg-query -W -f='${binary:Package}\t${Version}\n'
 
 xtdc_printa(){
 destino="$HOME/Imagens"
-#mkdir -p "$destino" || exit 1
 arquivo="$destino/print_$(date +%Y_%m_%d_%H_%M_%S).png"
 
 # Selecione a região com o mouse; cancelar encerra o script.
@@ -78,7 +197,7 @@ xfce4-screenshooter --region --save "$arquivo" || exit 1
 # Copia o PNG salvo para o clipboard.
 xclip -selection clipboard -t image/png -i "$arquivo"
 
-notify-send -t 3000 -i camera-photo "Captura de Tela" "Salva em:\n${arquivo}"
+notify-send -t 3000 -i xfce4-screenshooter "Captura de Tela" "Salva em:\n${arquivo}"
 }
     
 xtdc_esconde_link(){
@@ -88,6 +207,7 @@ for link do
     dir=$(dirname "$link")
     nome=$(basename "$link")
     printf "%s\n" "$nome" >> "$dir/.hidden"
+    sort -u "$dir/.hidden" -o "$dir/.hidden"
 done
 ' sh {} +
 }
@@ -113,9 +233,9 @@ xtdc_terminalnotopo(){
 
 xtdc_calculadoranotopo(){
     dica="- Calculadora no topo"
-    mate-calc &
+    /opt/appimages/SpeedCrunch-v1.1.0-anylinux-x86_64.AppImage &
     for i in $(seq 1 100); do
-        ID=$(wmctrl -lx | awk 'tolower($3) ~ /mate-calc/ {print $1; exit}')
+        ID=$(wmctrl -lx | awk 'tolower($3) ~ /speedcrunch/ {print $1; exit}')
         if [ -n "$ID" ]; then
             wmctrl -i -r "$ID" -b add,above
             return $?
@@ -139,12 +259,55 @@ xtdc_xtmnotopo(){
     return 1
 }
 
+xtdc_samba(){
+    dica="- Inicia servidor local"
+    if systemctl is-active --quiet smbd; then
+        sudo systemctl stop smbd && notify-send -t 3000 -i dialog-error "Samba" "Servidor DESLIGADO"
+    else
+        sudo systemctl start smbd && notify-send -t 3000 -i process-completed "Samba" "Servidor LIGADO"
+    fi
+}
+
 xtdc_loga(){
     dica="- Escreve um log"
     local msg="${1:-}"
     local log_file="$PWD/$(date +'%Y_%m_%d')_log.txt"
     echo "$msg" >> "$log_file"
 }
+
+xtdc_ren_ext(){
+        dica="- Renomeia arquivos com ext.EXT"    
+dir="${1:-.}"
+cd "$dir" || exit 1
+
+for arquivo in *; do
+    # Pula diretórios e o próprio script
+    [ -f "$arquivo" ] || continue
+    [ "$arquivo" = "renomear-ext.sh" ] && continue
+
+    # Extrai a extensão (tudo após o último ponto)
+    base="${arquivo%.*}"
+    ext="${arquivo##*.}"
+
+    # Sem extensão (ex: "Makefile") → pula
+    [ "$base" = "$arquivo" ] && continue
+
+    # Nome alvo: ext.ext
+    alvo="${ext}.${ext}"
+
+    # Já tem o nome certo → pula
+    [ "$arquivo" = "$alvo" ] && continue
+
+    if [ -e "$alvo" ]; then
+        echo "⚠  '$alvo' já existe → apagando '$arquivo'"
+        rm -- "$arquivo"
+    else
+        mv -- "$arquivo" "$alvo"
+        echo "✓  '$arquivo' → '$alvo'"
+    fi
+done
+
+    }
 
 xtdc_funcoes(){
     awk '
@@ -175,8 +338,6 @@ xtdc_funcoes(){
         END { exibir() }
     ' "${BASH_SOURCE[0]}"
 }
-
-
 
 # =================================================
 # ===============FIM DOS MAIS USADOS===============
@@ -319,4 +480,22 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     "$@"
 fi
 
-
+vazaventoy(){
+grep -i -n ventoy /boot/grub/grub.cfg
+sudo grep -i -n ventoy /boot/grub/grub.cfg
+tem Ventoy
+sudo systemctl disable --now ventoy-udev-trigger.service
+dpkg -S /etc/systemd/system/ventoy-udev-trigger.service
+systemctl cat ventoy-udev-trigger.service
+systemctl show -p FragmentPath ventoy-udev-trigger.service
+sudo systemctl stop ventoy-udev-trigger.service
+sudo systemctl disable ventoy-udev-trigger.service
+sudo rm /etc/systemd/system/ventoy-udev-trigger.service
+sudo systemctl daemon-reload   
+sudo rm -rf /opt/ventoy*
+sudo rm -f /usr/bin/ventoy
+sudo rm -f /usr/share/applications/ventoy.desktop   
+sudo systemctl disable --now ventoy-udev-trigger.service
+sudo rm /etc/systemd/system/ventoy-udev-trigger.service
+sudo systemctl daemon-reload
+}
