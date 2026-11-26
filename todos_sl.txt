@@ -137,6 +137,7 @@
 /usr/share/icons/xtdc_svg/scalable/actions/system-save-session.svg	./document-save.svg
 /usr/share/icons/xtdc_svg/scalable/actions/object-select-symbolic.svg	./checkmark.svg
 /usr/share/icons/xtdc_svg/scalable/actions/stock_dialog-error.svg	stop.svg
+/usr/share/icons/xtdc_svg/scalable/actions/folder-move.svg	folder-new.svg
 /usr/share/icons/xtdc_svg/scalable/actions/gtk-media-record.svg	media-record.svg
 /usr/share/icons/xtdc_svg/scalable/actions/gtk-delete.svg	edit-delete.svg
 /usr/share/icons/xtdc_svg/scalable/actions/gtk-select-color.svg	./color-picker.svg
