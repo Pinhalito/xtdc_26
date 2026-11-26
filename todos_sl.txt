@@ -14,9 +14,7 @@
 /usr/share/icons/xtdc_svg/scalable/status/gtk-dialog-error.svg	dialog-error.svg
 /usr/share/icons/xtdc_svg/scalable/status/messagebox_info.svg	help-contents.svg
 /usr/share/icons/xtdc_svg/scalable/status/gtk-dialog-question.svg	help-contents.svg
-/usr/share/icons/xtdc_svg/scalable/status/audio-volume-off.svg	audio-volume-muted.svg
 /usr/share/icons/xtdc_svg/scalable/status/messagebox_critical.svg	dialog-error.svg
-/usr/share/icons/xtdc_svg/scalable/status/image-missing.svg	../emblems/dialog-error.svg
 /usr/share/icons/xtdc_svg/scalable/status/gtk-dialog-warning.svg	dialog-warning.svg
 /usr/share/icons/xtdc_svg/scalable/status/dialog-question.svg	help-contents.svg
 /usr/share/icons/xtdc_svg/scalable/status/avatar-default.svg	../places/atoms.svg
